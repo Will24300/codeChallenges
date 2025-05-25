@@ -37,55 +37,27 @@ For the equal elements a[1] and b[1], no points are earned.
 Finally, for elements 2, a[2] > b[2] so Alice receives a point.
 The return array is [1, 1] with Alice's score first and Bob's second. */
 
-function diagonalDifference(arr) {
-  arr[0].splice(1, 1);
-  let spliced = arr[1].splice(1, 1);
-  arr[2].splice(1, 1);
+function digitalRoot(n) {
+  let sum = n
+    .toString()
+    .split("")
+    .reduce((acc, digit) => acc + parseInt(digit), 0);
 
-  let sum1 = 0;
-  let sum2 = 0;
-  let diff = 0;
-
-  sum1 += arr[0][0] + parseInt(spliced) + arr[2][1];
-  sum2 += arr[0][1] + parseInt(spliced) + arr[2][0];
-  for (let i = 0; i < 2; i++) {}
-
-  if (sum1 > sum2) {
-    diff += sum1 - sum2;
-  } else if (sum1 < sum2) {
-    diff += sum2 - sum1;
-  } else {
-    diff += 0;
+  if (sum > 9) {
+    return digitalRoot(sum);
   }
 
-  return diff;
+  console.log(sum);
+  return sum;
 }
 
-diagonalDifference([
-  [1, 2, 3],
-  [4, 5, 6],
-  [9, 8, 9],
-]);
+digitalRoot(195);
 
-// function diagonalDifference(matrix) {
-//     const n = matrix.length;
-//     let leftToRightSum = 0;
-//     let rightToLeftSum = 0;
+/* Digital root is the recursive sum of all the digits in a number.
 
-//     for (let i = 0; i < n; i++) {
-//         // Left-to-right diagonal (i,i)
-//         leftToRightSum += matrix[i][i];
-//         // Right-to-left diagonal (i,n-1-i)
-//         rightToLeftSum += matrix[i][n-1-i];
-//     }
+Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in this way until a single-digit number is produced. The input will be a non-negative integer.
 
-//     return Math.abs(leftToRightSum - rightToLeftSum);
-// }
-
-// // Example usage:
-// const matrix = [
-//     [1, 2, 3],
-//     [4, 5, 6],
-//     [9, 8, 9]
-// ];
-// console.log(diagonalDifference(matrix)); // Output: 2
+Examples
+    16  -->  1 + 6 = 7
+   942  -->  9 + 4 + 2 = 15  -->  1 + 5 = 6
+132189  -->  1 + 3 + 2 + 1 + 8 + 9 = 24  -->  2 + 4 = 6 */
