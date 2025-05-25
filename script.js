@@ -47,7 +47,6 @@ function digitalRoot(n) {
     return digitalRoot(sum);
   }
 
-  console.log(sum);
   return sum;
 }
 
@@ -61,3 +60,29 @@ Examples
     16  -->  1 + 6 = 7
    942  -->  9 + 4 + 2 = 15  -->  1 + 5 = 6
 132189  -->  1 + 3 + 2 + 1 + 8 + 9 = 24  -->  2 + 4 = 6 */
+
+function highAndLow(numbers) {
+  let numArr = numbers.split(" ");
+  let highest = parseInt(numArr[0]);
+  let smallest = parseInt(numArr[0]);
+
+  numArr.map((number) => {
+    if (parseInt(number) > highest) {
+      highest = parseInt(number);
+    }
+    if (parseInt(number) < smallest) {
+      smallest = parseInt(number);
+    }
+  });
+
+  return highest + " " + smallest;
+}
+
+console.log(highAndLow("1 2 -3 4 5"));
+
+/* In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
+
+Examples
+highAndLow("1 2 3 4 5"); // return "5 1"
+highAndLow("1 2 -3 4 5"); // return "5 -3"
+highAndLow("1 9 3 4 -5"); // return "9 -5" */
