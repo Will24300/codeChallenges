@@ -47,7 +47,6 @@ function digitalRoot(n) {
     return digitalRoot(sum);
   }
 
-  console.log(sum);
   return sum;
 }
 
