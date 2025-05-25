@@ -78,7 +78,7 @@ function highAndLow(numbers) {
   return highest + " " + smallest;
 }
 
-console.log(highAndLow("1 2 -3 4 5"));
+highAndLow("1 2 -3 4 5");
 
 /* In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
 
@@ -86,3 +86,31 @@ Examples
 highAndLow("1 2 3 4 5"); // return "5 1"
 highAndLow("1 2 -3 4 5"); // return "5 -3"
 highAndLow("1 9 3 4 -5"); // return "9 -5" */
+
+function XO(str) {
+  let countX = 0;
+  let countO = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    if (str[i].toLowerCase() === "o") {
+      countO++;
+    }
+    if (str[i].toLowerCase() === "x") {
+      countX++;
+    }
+  }
+
+  return countX === countO;
+}
+
+XO("ooxx");
+
+/* Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contain any char.
+
+Examples input/output:
+
+XO("ooxx") => true
+XO("xooxx") => false
+XO("ooxXm") => true
+XO("zpzpzpp") => true // when no 'x' and 'o' is present should return true
+XO("zzoo") => false */
