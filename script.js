@@ -132,7 +132,7 @@ function nbYear(p0, percent, aug, p) {
   return countYear;
 }
 
-nbYear(1000, 2, 50, 1200);
+nbYear(1000, 7, 50, 1700);
 
 /* In a small town the population is p0 = 1000 at the beginning of a year. The population regularly increases by 2 percent per year and moreover 50 new inhabitants per year come to live in the town. How many years does the town need to see its population greater than or equal to p = 1200 inhabitants?
 
@@ -161,3 +161,114 @@ Note:
 Don't forget to convert the percent parameter as a percentage in the body of your function: if the parameter percent is 2 you have to convert it to 0.02.
 
 There are no fractions of people. At the end of each year, the population count is an integer: 252.8 people round down to 252 persons. */
+
+function solution(str) {
+  const strL = str.length;
+  let subArr = [];
+  let arr = [];
+  let joinedArr = [];
+
+  if (strL % 2 === 0) {
+    for (let i = 0; i < strL; i++) {
+      subArr.push(str[i]);
+      if (subArr.length === 2) {
+        arr.push(subArr);
+        subArr = [];
+      }
+    }
+  }
+
+  if (strL % 2 !== 0) {
+    let newStr = str.concat("_");
+    for (let j = 0; j < newStr.length; j++) {
+      subArr.push(newStr[j]);
+      if (subArr.length === 2) {
+        arr.push(subArr);
+        subArr = [];
+      }
+    }
+  }
+
+  for (let k = 0; k < arr.length; k++) {
+    joinedArr.push(arr[k].join(""));
+  }
+
+  return joinedArr;
+}
+solution("a");
+
+/* Complete the solution so that it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of the final pair with an underscore ('_').
+
+Examples:
+
+* 'abc' =>  ['ab', 'c_']
+* 'abcdef' => ['ab', 'cd', 'ef'] */
+
+function validBraces(braces) {
+  let logic1 = "()";
+  let logic2 = "{}";
+  let logic3 = "[]";
+
+  // console.log(logic1.includes(")"));
+
+  //console.log(braces.includes("()" || "["));
+
+  // for (let i = 0; i < braces.length; i++) {
+  //   console.log(braces[i].find("["));
+  // }
+
+  // if (braces === logic) {
+  //   return true;
+  // } else {
+  //   return false;
+  // }
+}
+
+validBraces("{}[]");
+
+//cut the rop game to download
+
+function createPhoneNumber(numbers) {
+  let lgt = numbers.join("").length;
+  let str = numbers.join("");
+  let myStr;
+
+  if (lgt === 10) {
+    return (myStr = `(${str.slice(0, 3)}) ${str.slice(3, 6)}-${str.slice(
+      6,
+      9
+    )}`);
+  }
+
+  return myStr;
+}
+
+createPhoneNumber([2, 4, 3, 4, 5, 6, 7, 8, 9, 0]);
+
+function narcissistic(num) {
+  let str = num.toString();
+  let lgt = str.length;
+  let sum = 0;
+  // console.log(str.length);
+
+  for (let i = 0; i < lgt; i++) {
+    sum += parseInt(str[i]) ** lgt;
+  }
+
+  if (sum === num) {
+    return true;
+  } else {
+    return false;
+  }
+}
+narcissistic(153);
+
+function duplicateCount(text) {
+  const letters = "abcdefghijklmnopqrstuvwxyz";
+  let count = 0;
+
+  for (let i = 0; i < text.length; i++) {
+    console.log(text[i] === text[i]);
+  }
+}
+duplicateCount("aabbcde");
