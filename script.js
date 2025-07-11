@@ -224,51 +224,116 @@ function validBraces(braces) {
   // }
 }
 
-validBraces("{}[]");
+// validBraces("{}[]");
 
-//cut the rop game to download
+// //cut the rop game to download
 
-function createPhoneNumber(numbers) {
-  let lgt = numbers.join("").length;
-  let str = numbers.join("");
-  let myStr;
+// function createPhoneNumber(numbers) {
+//   let lgt = numbers.join("").length;
+//   let str = numbers.join("");
+//   let myStr;
 
-  if (lgt === 10) {
-    return (myStr = `(${str.slice(0, 3)}) ${str.slice(3, 6)}-${str.slice(
-      6,
-      9
-    )}`);
-  }
+//   if (lgt === 10) {
+//     return (myStr = `(${str.slice(0, 3)}) ${str.slice(3, 6)}-${str.slice(
+//       6,
+//       9
+//     )}`);
+//   }
 
-  return myStr;
+//   return myStr;
+// }
+
+// createPhoneNumber([2, 4, 3, 4, 5, 6, 7, 8, 9, 0]);
+
+// function narcissistic(num) {
+//   let str = num.toString();
+//   let lgt = str.length;
+//   let sum = 0;
+//   // console.log(str.length);
+
+//   for (let i = 0; i < lgt; i++) {
+//     sum += parseInt(str[i]) ** lgt;
+//   }
+
+//   if (sum === num) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+// narcissistic(153);
+
+// function duplicateCount(text) {
+//   let lwr = text.toLowerCase();
+//   let seenChar = {};
+//   let duplicateCount = 0;
+
+//   for (let char of lwr) {
+//     if (seenChar[char]) {
+//       seenChar[char]++;
+//       if (seenChar[char] == 2) {
+//         duplicateCount++;
+//       }
+//     } else {
+//       seenChar[char] = 1;
+//     }
+//   }
+// }
+// duplicateCount("aabbcde");
+
+function scoreboard(string) {
+  // code here!
+  let arrNumbers = [
+    "zero",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "nil",
+  ];
+
+  const words = string.split(" ");
+  let scoreA;
+  let scoreB;
+
+  const arr = words.filter((word) => arrNumbers.includes(word));
+
+  const convertToNumber = (str) => {
+    if (str === "nil" || str === "zero") {
+      return 0;
+    } else if (str === "one") {
+      return 1;
+    } else if (str === "two") {
+      return 2;
+    } else if (str === "three") {
+      return 3;
+    } else if (str === "four") {
+      return 4;
+    } else if (str === "five") {
+      return 5;
+    } else if (str === "six") {
+      return 6;
+    } else if (str === "seven") {
+      return 7;
+    } else if (str === "eight") {
+      return 8;
+    } else if (str === "nine") {
+      return 9;
+    } else if (str === "ten") {
+      return 10;
+    }
+  };
+
+  scoreA = convertToNumber(arr[0]);
+  scoreB = convertToNumber(arr[1]);
+
+  return [scoreA, scoreB];
 }
 
-createPhoneNumber([2, 4, 3, 4, 5, 6, 7, 8, 9, 0]);
-
-function narcissistic(num) {
-  let str = num.toString();
-  let lgt = str.length;
-  let sum = 0;
-  // console.log(str.length);
-
-  for (let i = 0; i < lgt; i++) {
-    sum += parseInt(str[i]) ** lgt;
-  }
-
-  if (sum === num) {
-    return true;
-  } else {
-    return false;
-  }
-}
-narcissistic(153);
-
-function duplicateCount(text) {
-  const letters = "abcdefghijklmnopqrstuvwxyz";
-  let count = 0;
-
-  for (let i = 0; i < text.length; i++) {
-    console.log(text[i] === text[i]);
-  }
-}
-duplicateCount("aabbcde");
+console.log(scoreboard("the score is four four"));
