@@ -281,6 +281,8 @@ function validBraces(braces) {
 // }
 // duplicateCount("aabbcde");
 
+/*
+
 function scoreboard(string) {
   // code here!
   let arrNumbers = [
@@ -337,3 +339,46 @@ function scoreboard(string) {
 }
 
 console.log(scoreboard("the score is four four"));
+
+
+function toCamelCase(str) {
+  let wrds;
+
+  if (str.length > 0) {
+    if (str.includes("_") && str.includes("_")) {
+      wrds = str.split("-").join("_").split("_");
+
+      let arrWrds = [];
+      let firstW = wrds[0];
+      let secondW = wrds.slice(1);
+
+      secondW.map((word) => {
+        arrWrds.push(word[0].toUpperCase() + word.slice(1));
+      });
+
+      return firstW + arrWrds.join("");
+    }
+    if (str.includes("-")) wrds = str.split("-");
+    if (str.includes("_")) wrds = str.split("_");
+
+    // console.log(wrds);
+
+    let arrWrds = [];
+    let firstW = wrds[0];
+    let secondW = wrds.slice(1);
+
+    secondW.map((word) => {
+      arrWrds.push(word[0].toUpperCase() + word.slice(1));
+    });
+
+    return firstW + arrWrds.join("");
+  } else {
+    return "";
+  }
+}
+
+// toCamelCase("a_Pippi-was-cute");
+// toCamelCase("The-Pippi-Is_Kawaii");
+// console.log(toCamelCase("a_Pippi-was-cute"));
+console.log(toCamelCase("The-Pippi-Is_Kawaii"));
+*/
