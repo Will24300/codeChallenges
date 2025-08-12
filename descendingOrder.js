@@ -1,5 +1,4 @@
 function descendingOrder(n) {
-  //   if (n.length === 1) return n;
   const spltArr = String(n).split("");
   const newArr = [];
   for (const num of spltArr) {
