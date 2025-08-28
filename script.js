@@ -1,384 +1,393 @@
-function compareTriplets(a, b) {
-  let countA = 0;
-  let countB = 0;
-  let newArr = [];
-
-  for (let i = 0; i < a.length; i++) {
-    if (a[i] > b[i]) {
-      countA++;
-    } else if (a[i] < b[i]) {
-      countB++;
-    } else {
-      continue;
-    }
-  }
-  newArr.push(countA, countB);
-
-  return newArr;
-}
-compareTriplets([5, 6, 7], [3, 6, 10]);
-
-/* Alice and Bob each created one problem for HackerRank. A reviewer rates the two challenges, awarding points on a scale from 1 to 100 for three categories: problem clarity, originality, and difficulty.
-
-The rating for Alice's challenge is the triplet a = (a[0], a[1], a[2]), and the rating for Bob's challenge is the triplet b = (b[0], b[1], b[2]).
-
-The task is to calculate their comparison points by comparing each category:
-
-If a[i] > b[i], then Alice is awarded 1 point.
-If a[i] < b[i], then Bob is awarded 1 point.
-If a[i] = b[i], then neither person receives a point.
-Example
-
-a = [1, 2, 3]
-b = [3, 2, 1]
-
-For elements *0*, Bob is awarded a point because a[0] < b[0].
-For the equal elements a[1] and b[1], no points are earned.
-Finally, for elements 2, a[2] > b[2] so Alice receives a point.
-The return array is [1, 1] with Alice's score first and Bob's second. */
-
-function digitalRoot(n) {
-  let sum = n
-    .toString()
-    .split("")
-    .reduce((acc, digit) => acc + parseInt(digit), 0);
-
-  if (sum > 9) {
-    return digitalRoot(sum);
-  }
-
-  return sum;
-}
-
-digitalRoot(195);
-
-/* Digital root is the recursive sum of all the digits in a number.
-
-Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in this way until a single-digit number is produced. The input will be a non-negative integer.
-
-Examples
-    16  -->  1 + 6 = 7
-   942  -->  9 + 4 + 2 = 15  -->  1 + 5 = 6
-132189  -->  1 + 3 + 2 + 1 + 8 + 9 = 24  -->  2 + 4 = 6 */
-
-function highAndLow(numbers) {
-  let numArr = numbers.split(" ");
-  let highest = parseInt(numArr[0]);
-  let smallest = parseInt(numArr[0]);
-
-  numArr.map((number) => {
-    if (parseInt(number) > highest) {
-      highest = parseInt(number);
-    }
-    if (parseInt(number) < smallest) {
-      smallest = parseInt(number);
-    }
-  });
-
-  return highest + " " + smallest;
-}
-
-highAndLow("1 2 -3 4 5");
-
-/* In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
-
-Examples
-highAndLow("1 2 3 4 5"); // return "5 1"
-highAndLow("1 2 -3 4 5"); // return "5 -3"
-highAndLow("1 9 3 4 -5"); // return "9 -5" */
-
-function XO(str) {
-  let countX = 0;
-  let countO = 0;
-
-  for (let i = 0; i < str.length; i++) {
-    if (str[i].toLowerCase() === "o") {
-      countO++;
-    }
-    if (str[i].toLowerCase() === "x") {
-      countX++;
-    }
-  }
-
-  return countX === countO;
-}
-
-XO("ooxx");
-
-/* Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contain any char.
-
-Examples input/output:
-
-XO("ooxx") => true
-XO("xooxx") => false
-XO("ooxXm") => true
-XO("zpzpzpp") => true // when no 'x' and 'o' is present should return true
-XO("zzoo") => false */
-
-function nbYear(p0, percent, aug, p) {
-  let newPercent = percent / 100;
-  let countYear = 0;
-
-  const coverter = (n) => {
-    p0 = Math.trunc(n + n * newPercent + aug);
-
-    return p0;
-  };
-
-  while (p0 < p) {
-    coverter(p0);
-    countYear++;
-  }
-  return countYear;
-}
-
-nbYear(1000, 7, 50, 1700);
-
-/* In a small town the population is p0 = 1000 at the beginning of a year. The population regularly increases by 2 percent per year and moreover 50 new inhabitants per year come to live in the town. How many years does the town need to see its population greater than or equal to p = 1200 inhabitants?
-
-At the end of the first year there will be: 
-1000 + 1000 * 0.02 + 50 => 1070 inhabitants
-
-At the end of the 2nd year there will be: 
-1070 + 1070 * 0.02 + 50 => 1141 inhabitants (** number of inhabitants is an integer **)
-
-At the end of the 3rd year there will be:
-1141 + 1141 * 0.02 + 50 => 1213
-
-It will need 3 entire years.
-More generally given parameters:
-
-p0, percent, aug (inhabitants coming or leaving each year), p (population to equal or surpass)
-
-the function nb_year should return n number of entire years needed to get a population greater or equal to p.
-
-aug is an integer, percent a positive or null floating number, p0 and p are positive integers (> 0)
-
-Examples:
-nb_year(1500, 5, 100, 5000) -> 15
-nb_year(1500000, 2.5, 10000, 2000000) -> 10
-Note:
-Don't forget to convert the percent parameter as a percentage in the body of your function: if the parameter percent is 2 you have to convert it to 0.02.
-
-There are no fractions of people. At the end of each year, the population count is an integer: 252.8 people round down to 252 persons. */
-
-function solution(str) {
-  const strL = str.length;
-  let subArr = [];
-  let arr = [];
-  let joinedArr = [];
-
-  if (strL % 2 === 0) {
-    for (let i = 0; i < strL; i++) {
-      subArr.push(str[i]);
-      if (subArr.length === 2) {
-        arr.push(subArr);
-        subArr = [];
-      }
-    }
-  }
-
-  if (strL % 2 !== 0) {
-    let newStr = str.concat("_");
-    for (let j = 0; j < newStr.length; j++) {
-      subArr.push(newStr[j]);
-      if (subArr.length === 2) {
-        arr.push(subArr);
-        subArr = [];
-      }
-    }
-  }
-
-  for (let k = 0; k < arr.length; k++) {
-    joinedArr.push(arr[k].join(""));
-  }
-
-  return joinedArr;
-}
-solution("a");
-
-/* Complete the solution so that it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of the final pair with an underscore ('_').
-
-Examples:
-
-* 'abc' =>  ['ab', 'c_']
-* 'abcdef' => ['ab', 'cd', 'ef'] */
-
-function validBraces(braces) {
-  let logic1 = "()";
-  let logic2 = "{}";
-  let logic3 = "[]";
-
-  // console.log(logic1.includes(")"));
-
-  //console.log(braces.includes("()" || "["));
-
-  // for (let i = 0; i < braces.length; i++) {
-  //   console.log(braces[i].find("["));
-  // }
-
-  // if (braces === logic) {
-  //   return true;
-  // } else {
-  //   return false;
-  // }
-}
-
-// validBraces("{}[]");
-
-// //cut the rop game to download
-
-// function createPhoneNumber(numbers) {
-//   let lgt = numbers.join("").length;
-//   let str = numbers.join("");
-//   let myStr;
-
-//   if (lgt === 10) {
-//     return (myStr = `(${str.slice(0, 3)}) ${str.slice(3, 6)}-${str.slice(
-//       6,
-//       9
-//     )}`);
-//   }
-
-//   return myStr;
-// }
-
-// createPhoneNumber([2, 4, 3, 4, 5, 6, 7, 8, 9, 0]);
-
-// function narcissistic(num) {
-//   let str = num.toString();
-//   let lgt = str.length;
-//   let sum = 0;
-//   // console.log(str.length);
-
-//   for (let i = 0; i < lgt; i++) {
-//     sum += parseInt(str[i]) ** lgt;
-//   }
-
-//   if (sum === num) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// }
-// narcissistic(153);
-
-// function duplicateCount(text) {
-//   let lwr = text.toLowerCase();
-//   let seenChar = {};
-//   let duplicateCount = 0;
-
-//   for (let char of lwr) {
-//     if (seenChar[char]) {
-//       seenChar[char]++;
-//       if (seenChar[char] == 2) {
-//         duplicateCount++;
-//       }
+// function compareTriplets(a, b) {
+//   let countA = 0;
+//   let countB = 0;
+//   let newArr = [];
+
+//   for (let i = 0; i < a.length; i++) {
+//     if (a[i] > b[i]) {
+//       countA++;
+//     } else if (a[i] < b[i]) {
+//       countB++;
 //     } else {
-//       seenChar[char] = 1;
+//       continue;
 //     }
 //   }
+//   newArr.push(countA, countB);
+
+//   return newArr;
 // }
-// duplicateCount("aabbcde");
+// compareTriplets([5, 6, 7], [3, 6, 10]);
 
-/*
+// /* Alice and Bob each created one problem for HackerRank. A reviewer rates the two challenges, awarding points on a scale from 1 to 100 for three categories: problem clarity, originality, and difficulty.
 
-function scoreboard(string) {
-  // code here!
-  let arrNumbers = [
-    "zero",
-    "one",
-    "two",
-    "three",
-    "four",
-    "five",
-    "six",
-    "seven",
-    "eight",
-    "nine",
-    "ten",
-    "nil",
-  ];
+// The rating for Alice's challenge is the triplet a = (a[0], a[1], a[2]), and the rating for Bob's challenge is the triplet b = (b[0], b[1], b[2]).
 
-  const words = string.split(" ");
-  let scoreA;
-  let scoreB;
+// The task is to calculate their comparison points by comparing each category:
 
-  const arr = words.filter((word) => arrNumbers.includes(word));
+// If a[i] > b[i], then Alice is awarded 1 point.
+// If a[i] < b[i], then Bob is awarded 1 point.
+// If a[i] = b[i], then neither person receives a point.
+// Example
 
-  const convertToNumber = (str) => {
-    if (str === "nil" || str === "zero") {
-      return 0;
-    } else if (str === "one") {
-      return 1;
-    } else if (str === "two") {
-      return 2;
-    } else if (str === "three") {
-      return 3;
-    } else if (str === "four") {
-      return 4;
-    } else if (str === "five") {
-      return 5;
-    } else if (str === "six") {
-      return 6;
-    } else if (str === "seven") {
-      return 7;
-    } else if (str === "eight") {
-      return 8;
-    } else if (str === "nine") {
-      return 9;
-    } else if (str === "ten") {
-      return 10;
-    }
-  };
+// a = [1, 2, 3]
+// b = [3, 2, 1]
 
-  scoreA = convertToNumber(arr[0]);
-  scoreB = convertToNumber(arr[1]);
+// For elements *0*, Bob is awarded a point because a[0] < b[0].
+// For the equal elements a[1] and b[1], no points are earned.
+// Finally, for elements 2, a[2] > b[2] so Alice receives a point.
+// The return array is [1, 1] with Alice's score first and Bob's second. */
 
-  return [scoreA, scoreB];
-}
+// function digitalRoot(n) {
+//   let sum = n
+//     .toString()
+//     .split("")
+//     .reduce((acc, digit) => acc + parseInt(digit), 0);
 
-console.log(scoreboard("the score is four four"));
+//   if (sum > 9) {
+//     return digitalRoot(sum);
+//   }
 
+//   return sum;
+// }
 
-function toCamelCase(str) {
-  let wrds;
+// digitalRoot(195);
 
-  if (str.length > 0) {
-    if (str.includes("_") && str.includes("_")) {
-      wrds = str.split("-").join("_").split("_");
+// /* Digital root is the recursive sum of all the digits in a number.
 
-      let arrWrds = [];
-      let firstW = wrds[0];
-      let secondW = wrds.slice(1);
+// Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in this way until a single-digit number is produced. The input will be a non-negative integer.
 
-      secondW.map((word) => {
-        arrWrds.push(word[0].toUpperCase() + word.slice(1));
-      });
+// Examples
+//     16  -->  1 + 6 = 7
+//    942  -->  9 + 4 + 2 = 15  -->  1 + 5 = 6
+// 132189  -->  1 + 3 + 2 + 1 + 8 + 9 = 24  -->  2 + 4 = 6 */
 
-      return firstW + arrWrds.join("");
-    }
-    if (str.includes("-")) wrds = str.split("-");
-    if (str.includes("_")) wrds = str.split("_");
+// function highAndLow(numbers) {
+//   let numArr = numbers.split(" ");
+//   let highest = parseInt(numArr[0]);
+//   let smallest = parseInt(numArr[0]);
 
-    // console.log(wrds);
+//   numArr.map((number) => {
+//     if (parseInt(number) > highest) {
+//       highest = parseInt(number);
+//     }
+//     if (parseInt(number) < smallest) {
+//       smallest = parseInt(number);
+//     }
+//   });
 
-    let arrWrds = [];
-    let firstW = wrds[0];
-    let secondW = wrds.slice(1);
+//   return highest + " " + smallest;
+// }
 
-    secondW.map((word) => {
-      arrWrds.push(word[0].toUpperCase() + word.slice(1));
-    });
+// highAndLow("1 2 -3 4 5");
 
-    return firstW + arrWrds.join("");
-  } else {
-    return "";
-  }
-}
+// /* In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
 
-// toCamelCase("a_Pippi-was-cute");
-// toCamelCase("The-Pippi-Is_Kawaii");
-// console.log(toCamelCase("a_Pippi-was-cute"));
-console.log(toCamelCase("The-Pippi-Is_Kawaii"));
-*/
+// Examples
+// highAndLow("1 2 3 4 5"); // return "5 1"
+// highAndLow("1 2 -3 4 5"); // return "5 -3"
+// highAndLow("1 9 3 4 -5"); // return "9 -5" */
+
+// function XO(str) {
+//   let countX = 0;
+//   let countO = 0;
+
+//   for (let i = 0; i < str.length; i++) {
+//     if (str[i].toLowerCase() === "o") {
+//       countO++;
+//     }
+//     if (str[i].toLowerCase() === "x") {
+//       countX++;
+//     }
+//   }
+
+//   return countX === countO;
+// }
+
+// XO("ooxx");
+
+// /* Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contain any char.
+
+// Examples input/output:
+
+// XO("ooxx") => true
+// XO("xooxx") => false
+// XO("ooxXm") => true
+// XO("zpzpzpp") => true // when no 'x' and 'o' is present should return true
+// XO("zzoo") => false */
+
+// function nbYear(p0, percent, aug, p) {
+//   let newPercent = percent / 100;
+//   let countYear = 0;
+
+//   const coverter = (n) => {
+//     p0 = Math.trunc(n + n * newPercent + aug);
+
+//     return p0;
+//   };
+
+//   while (p0 < p) {
+//     coverter(p0);
+//     countYear++;
+//   }
+//   return countYear;
+// }
+
+// nbYear(1000, 7, 50, 1700);
+
+// /* In a small town the population is p0 = 1000 at the beginning of a year. The population regularly increases by 2 percent per year and moreover 50 new inhabitants per year come to live in the town. How many years does the town need to see its population greater than or equal to p = 1200 inhabitants?
+
+// At the end of the first year there will be:
+// 1000 + 1000 * 0.02 + 50 => 1070 inhabitants
+
+// At the end of the 2nd year there will be:
+// 1070 + 1070 * 0.02 + 50 => 1141 inhabitants (** number of inhabitants is an integer **)
+
+// At the end of the 3rd year there will be:
+// 1141 + 1141 * 0.02 + 50 => 1213
+
+// It will need 3 entire years.
+// More generally given parameters:
+
+// p0, percent, aug (inhabitants coming or leaving each year), p (population to equal or surpass)
+
+// the function nb_year should return n number of entire years needed to get a population greater or equal to p.
+
+// aug is an integer, percent a positive or null floating number, p0 and p are positive integers (> 0)
+
+// Examples:
+// nb_year(1500, 5, 100, 5000) -> 15
+// nb_year(1500000, 2.5, 10000, 2000000) -> 10
+// Note:
+// Don't forget to convert the percent parameter as a percentage in the body of your function: if the parameter percent is 2 you have to convert it to 0.02.
+
+// There are no fractions of people. At the end of each year, the population count is an integer: 252.8 people round down to 252 persons. */
+
+// function solution(str) {
+//   const strL = str.length;
+//   let subArr = [];
+//   let arr = [];
+//   let joinedArr = [];
+
+//   if (strL % 2 === 0) {
+//     for (let i = 0; i < strL; i++) {
+//       subArr.push(str[i]);
+//       if (subArr.length === 2) {
+//         arr.push(subArr);
+//         subArr = [];
+//       }
+//     }
+//   }
+
+//   if (strL % 2 !== 0) {
+//     let newStr = str.concat("_");
+//     for (let j = 0; j < newStr.length; j++) {
+//       subArr.push(newStr[j]);
+//       if (subArr.length === 2) {
+//         arr.push(subArr);
+//         subArr = [];
+//       }
+//     }
+//   }
+
+//   for (let k = 0; k < arr.length; k++) {
+//     joinedArr.push(arr[k].join(""));
+//   }
+
+//   return joinedArr;
+// }
+// solution("a");
+
+// /* Complete the solution so that it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of the final pair with an underscore ('_').
+
+// Examples:
+
+// * 'abc' =>  ['ab', 'c_']
+// * 'abcdef' => ['ab', 'cd', 'ef'] */
+
+// function validBraces(braces) {
+//   let logic1 = "()";
+//   let logic2 = "{}";
+//   let logic3 = "[]";
+
+//   // console.log(logic1.includes(")"));
+
+//   //console.log(braces.includes("()" || "["));
+
+//   // for (let i = 0; i < braces.length; i++) {
+//   //   console.log(braces[i].find("["));
+//   // }
+
+//   // if (braces === logic) {
+//   //   return true;
+//   // } else {
+//   //   return false;
+//   // }
+// }
+
+// // validBraces("{}[]");
+
+// // //cut the rop game to download
+
+// // function createPhoneNumber(numbers) {
+// //   let lgt = numbers.join("").length;
+// //   let str = numbers.join("");
+// //   let myStr;
+
+// //   if (lgt === 10) {
+// //     return (myStr = `(${str.slice(0, 3)}) ${str.slice(3, 6)}-${str.slice(
+// //       6,
+// //       9
+// //     )}`);
+// //   }
+
+// //   return myStr;
+// // }
+
+// // createPhoneNumber([2, 4, 3, 4, 5, 6, 7, 8, 9, 0]);
+
+// // function narcissistic(num) {
+// //   let str = num.toString();
+// //   let lgt = str.length;
+// //   let sum = 0;
+// //   // console.log(str.length);
+
+// //   for (let i = 0; i < lgt; i++) {
+// //     sum += parseInt(str[i]) ** lgt;
+// //   }
+
+// //   if (sum === num) {
+// //     return true;
+// //   } else {
+// //     return false;
+// //   }
+// // }
+// // narcissistic(153);
+
+// // function duplicateCount(text) {
+// //   let lwr = text.toLowerCase();
+// //   let seenChar = {};
+// //   let duplicateCount = 0;
+
+// //   for (let char of lwr) {
+// //     if (seenChar[char]) {
+// //       seenChar[char]++;
+// //       if (seenChar[char] == 2) {
+// //         duplicateCount++;
+// //       }
+// //     } else {
+// //       seenChar[char] = 1;
+// //     }
+// //   }
+// // }
+// // duplicateCount("aabbcde");
+
+// /*
+
+// function scoreboard(string) {
+//   // code here!
+//   let arrNumbers = [
+//     "zero",
+//     "one",
+//     "two",
+//     "three",
+//     "four",
+//     "five",
+//     "six",
+//     "seven",
+//     "eight",
+//     "nine",
+//     "ten",
+//     "nil",
+//   ];
+
+//   const words = string.split(" ");
+//   let scoreA;
+//   let scoreB;
+
+//   const arr = words.filter((word) => arrNumbers.includes(word));
+
+//   const convertToNumber = (str) => {
+//     if (str === "nil" || str === "zero") {
+//       return 0;
+//     } else if (str === "one") {
+//       return 1;
+//     } else if (str === "two") {
+//       return 2;
+//     } else if (str === "three") {
+//       return 3;
+//     } else if (str === "four") {
+//       return 4;
+//     } else if (str === "five") {
+//       return 5;
+//     } else if (str === "six") {
+//       return 6;
+//     } else if (str === "seven") {
+//       return 7;
+//     } else if (str === "eight") {
+//       return 8;
+//     } else if (str === "nine") {
+//       return 9;
+//     } else if (str === "ten") {
+//       return 10;
+//     }
+//   };
+
+//   scoreA = convertToNumber(arr[0]);
+//   scoreB = convertToNumber(arr[1]);
+
+//   return [scoreA, scoreB];
+// }
+
+// console.log(scoreboard("the score is four four"));
+
+// function toCamelCase(str) {
+//   let wrds;
+
+//   if (str.length > 0) {
+//     if (str.includes("_") && str.includes("_")) {
+//       wrds = str.split("-").join("_").split("_");
+
+//       let arrWrds = [];
+//       let firstW = wrds[0];
+//       let secondW = wrds.slice(1);
+
+//       secondW.map((word) => {
+//         arrWrds.push(word[0].toUpperCase() + word.slice(1));
+//       });
+
+//       return firstW + arrWrds.join("");
+//     }
+//     if (str.includes("-")) wrds = str.split("-");
+//     if (str.includes("_")) wrds = str.split("_");
+
+//     // console.log(wrds);
+
+//     let arrWrds = [];
+//     let firstW = wrds[0];
+//     let secondW = wrds.slice(1);
+
+//     secondW.map((word) => {
+//       arrWrds.push(word[0].toUpperCase() + word.slice(1));
+//     });
+
+//     return firstW + arrWrds.join("");
+//   } else {
+//     return "";
+//   }
+// }
+
+// // toCamelCase("a_Pippi-was-cute");
+// // toCamelCase("The-Pippi-Is_Kawaii");
+// // console.log(toCamelCase("a_Pippi-was-cute"));
+// console.log(toCamelCase("The-Pippi-Is_Kawaii"));
+// */
+
+const products = [
+  { name: "Laptop", price: 1200 },
+  { name: "Headphones", price: 150 },
+  { name: "Smartphone", price: 800 },
+  { name: "Keyboard", price: 75 },
+  { name: "Monitor", price: 300 },
+];
+
+console.log(products.sort((a, b) => a.price - b.price));
