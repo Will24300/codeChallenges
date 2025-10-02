@@ -16,7 +16,7 @@ function countFeelings(string, array) {
 
   const lgt = feelings.length;
 
-  return lgt > 0 ? `${lgt} feelings.` : `${lgt} feeling.`;
+  return lgt > 1 ? `${lgt} feelings.` : `${lgt} feeling.`;
 }
 // countFeelings("yliausoenvjw", ["anger", "awe", "joy", "love", "grief"]);
 countFeelings("angerw", ["anger", "awe", "joy", "love", "grief"]);

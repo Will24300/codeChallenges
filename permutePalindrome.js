@@ -1,10 +1,18 @@
 function permuteAPalindrome(input) {
-  //   const splStr = input.split("").reverse().join("");
-  //   console.log(splStr);
+  console.log(input);
 
-  return input.split("").reverse().join("") == input;
+  console.log(input.split("").reverse().join(""));
 }
 
-// const result = permuteAPalindrome("baabcd");
-const result = permuteAPalindrome("racecars");
-console.log(result);
+permuteAPalindrome("junk");
+
+// Moving zero to the end
+// IP validation
+
+function test(a = 10) {
+  console.log(a);
+}
+
+test(); // 10 (no argument → default used)
+test(undefined); // 10 (explicit undefined → default used)
+test(null); // null (default NOT used, because null ≠ undefined)
