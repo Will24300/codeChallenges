@@ -20,3 +20,13 @@ console.log(nthSmallest([[2, 2, 2, 2, 2]], 3));
 // All the arguments except the last will be arrays, the last argument is n.
 
 // nthSmallest([1,5], [2], [4,8,9], 4) // returns 5 because it's the 4th smallest value
+
+// function nthSmallest(...args) {
+//   const n = args.pop();
+//   const nums = [];
+//   for (const arr of args){
+//     nums.push(...arr);
+//   }
+
+//   return nums.sort((a,b) => a -b)[n-1];
+// }
