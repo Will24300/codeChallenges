@@ -15,3 +15,7 @@ function inArray(array1, array2) {
 }
 
 console.log(inArray(a1, a2));
+
+// function inArray(array1,array2){
+//  return array1.filter(ar1 => array2.find(ar2 => ar2.match(ar1))).sort()
+// }
