@@ -7,6 +7,5 @@ function minimumBillCount(value, availables) {
   return numbers.sort((a, b) => a - b)[0];
 }
 console.log(minimumBillCount(10000000, [1, 10, 20, 50, 100]));
-// console.log(minimumBillCount(1010, [50, 1, 20]));
-console.log(minimumBillCount(1234567, [1, 10, 20]));
+
 console.log(minimumBillCount(40, [1, 10, 20]));
