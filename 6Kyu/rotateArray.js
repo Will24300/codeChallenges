@@ -1,19 +1,16 @@
-function rotate(array, n) {
-  const copyArr = [...array];
-
-  if (n === 0 || copyArr.length === 0) return copyArr;
+function rotate(data, n) {
+  if (n === 0 || data.length === 0) return data;
   if (n > 0) {
-    for (let i = 1; i <= n; i++) {
-      const poped = copyArr.pop();
-      copyArr.unshift(poped);
+    for (let i = 0; i < n; i++) {
+      const poped = data.pop();
+      data.unshift(poped);
     }
-    return copyArr;
-  }
-  if (n < 0) {
-    for (let i = 1; i <= Math.abs(n); i++) {
-      const shifted = copyArr.shift();
-      copyArr.push(shifted);
+    return data;
+  } else {
+    for (let i = 0; i < Math.abs(n); i++) {
+      const shifted = data.shift();
+      data.push(shifted);
     }
-    return copyArr;
+    return data;
   }
 }

@@ -18,4 +18,3 @@ function rotate(array, n) {
     return copyArr;
   }
 }
-console.log(rotate(data, -1));
