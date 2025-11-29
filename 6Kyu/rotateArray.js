@@ -1,4 +1,3 @@
-var data = [1, 2, 3, 4, 5];
 function rotate(array, n) {
   const copyArr = [...array];
 
@@ -18,4 +17,3 @@ function rotate(array, n) {
     return copyArr;
   }
 }
-console.log(rotate(data, -1));
