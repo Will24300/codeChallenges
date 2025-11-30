@@ -1,20 +1,23 @@
-var data = [1, 2, 3, 4, 5];
-function rotate(array, n) {
-  const copyArr = [...array];
+function firstNonRepeatingLetter(s) {
+  const str = s.toLowerCase();
+  const unique = new Set();
+  const myArr = [];
+  const result = [];
 
-  if (n === 0 || copyArr.length === 0) return copyArr;
-  if (n > 0) {
-    for (let i = 1; i <= n; i++) {
-      const poped = copyArr.pop();
-      copyArr.unshift(poped);
+  for (let char of str) {
+    if (unique.has(char)) {
+      myArr.push(char);
     }
-    return copyArr;
+    unique.add(char);
   }
-  if (n < 0) {
-    for (let i = 1; i <= Math.abs(n); i++) {
-      const shifted = copyArr.shift();
-      copyArr.push(shifted);
+
+  for (const ch of unique) {
+    if (!myArr.includes(ch)) {
+      result.push(ch);
     }
-    return copyArr;
   }
+
+  console.log(result[0]);
 }
+firstNonRepeatingLetter("StressE");
+firstNonRepeatingLetter("moonmen");
