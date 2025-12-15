@@ -1,23 +1,10 @@
-function firstNonRepeatingLetter(s) {
-  const str = s.toLowerCase();
-  const unique = new Set();
-  const myArr = [];
-  const result = [];
-
-  for (let char of str) {
-    if (unique.has(char)) {
-      myArr.push(char);
+function countRepeats(str) {
+    const res = [];
+    for (let i = 0; i < str.length; i++){
+        if (str.indexOf(str[i]) !== str.lastIndexOf(str[i])){
+            res.push(str[i])
+        }
     }
-    unique.add(char);
-  }
-
-  for (const ch of unique) {
-    if (!myArr.includes(ch)) {
-      result.push(ch);
-    }
-  }
-
-  console.log(result[0]);
+    const minus = [...new Set(res)].length;
+    return res.length - minus;
 }
-firstNonRepeatingLetter("StressE");
-firstNonRepeatingLetter("moonmen");
