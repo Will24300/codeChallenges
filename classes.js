@@ -61,6 +61,7 @@ function stringTransformation(string, transformations) {
         duplicate(str);
         break;
     }
+    default: break;
   }
 
   return str;
