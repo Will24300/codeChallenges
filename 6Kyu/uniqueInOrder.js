@@ -7,8 +7,6 @@ var uniqueInOrder = function (iterable) {
     }
   }
   return result;
-//   console.log(result);
-  
 };
 
 uniqueInOrder("AAAABBBCCDAABBB");
